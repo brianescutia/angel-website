@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /workspace/repo 2>&1 | head -50)",
+      "Bash(ls /Users/brian.pimpsss/sorted_projects/ 2>&1 | grep -i angel; echo \"---\"; ls ~ 2>&1 | head -30)",
+      "Bash(npm install *)",
+      "Bash(echo \"---EXIT:$?---\")",
+      "Bash(echo \"EXIT=$?\")",
+      "Read(//tmp/**)"
+    ]
+  }
+}

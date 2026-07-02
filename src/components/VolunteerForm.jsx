@@ -61,8 +61,6 @@ export default function VolunteerForm() {
 
   return (
     <div className="volunteer-card" id="volunteer-form">
-      <p className="eyebrow">{v.eyebrow}</p>
-      <h3 className="volunteer-title">{v.title}</h3>
       <p className="volunteer-lead">{v.lead}</p>
       <p className="volunteer-note">
         {v.leadNote} <a href={`tel:${t.footer.phone.replace(/[^0-9+]/g, '')}`}>{t.footer.phone}</a>

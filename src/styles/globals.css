@@ -649,42 +649,38 @@ p { margin: 0; }
 }
 
 /* ===== Get Involved ===== */
-.involve-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
+.involve-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 5vw, 72px); align-items: stretch; }
 .involve-copy { align-self: start; }
 .involve-copy .display { margin-bottom: 18px; }
 .involve-copy .lead { margin-bottom: 28px; }
-.involve-ways { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+/* Cards stretch to fill the copy/form column height so both columns bottom-align */
+.involve-ways { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 1fr); gap: 14px; }
 .way {
+  display: flex; flex-direction: column; justify-content: center;
   background: var(--cream-card); border: 1px solid var(--cream-line);
-  border-radius: var(--radius-md); padding: 24px 24px 26px;
+  border-radius: var(--radius-md); padding: 26px 26px 28px;
   box-shadow: var(--shadow-sm);
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 .way:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--leaf); }
 .way-mark {
-  width: 40px; height: 40px; border-radius: 50%; margin-bottom: 16px;
+  width: 44px; height: 44px; border-radius: 50%; margin-bottom: 16px;
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--green-100); color: var(--green-700);
 }
-.way h3 { font-size: 19px; font-weight: 560; margin-bottom: 6px; color: var(--green-900); }
-.way p { color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+.way-mark svg { width: 22px; height: 22px; }
+.way h3 { font-size: 20px; font-weight: 560; margin-bottom: 7px; color: var(--green-900); }
+.way p { color: var(--ink-2); font-size: 15.5px; line-height: 1.55; }
 
-/* Volunteer sign-up card — compact, doesn't take over the section */
+/* Volunteer sign-up card — sits in the left copy column, aligned with the
+   ways grid on the right (header above it acts as the section heading). */
 .volunteer-card {
-  grid-column: 1 / -1;
-  scroll-margin-top: 110px; /* clear the fixed header when jumped to via #volunteer-form */
-  max-width: 640px;
   background: var(--cream-card);
   border: 1px solid var(--cream-line);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  padding: clamp(28px, 3.2vw, 40px);
-  margin-top: 8px;
-}
-.volunteer-title {
-  font-family: var(--font-display); font-weight: 560;
-  font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15;
-  color: var(--green-900); margin-bottom: 12px;
+  padding: clamp(22px, 2.4vw, 30px);
+  margin-top: 10px;
 }
 .volunteer-lead { color: var(--ink-2); font-size: 15.5px; line-height: 1.55; margin-bottom: 8px; }
 .volunteer-note { color: var(--ink-2); font-size: 15.5px; line-height: 1.55; margin-bottom: 26px; }

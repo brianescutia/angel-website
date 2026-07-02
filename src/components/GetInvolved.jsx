@@ -12,8 +12,7 @@ export default function GetInvolved() {
         <div className="involve-copy">
           <p className="eyebrow">{t.involve.eyebrow}</p>
           <h2 className="display">{t.involve.title}</h2>
-          <p className="lead">{t.involve.body}</p>
-          <a href="#volunteer-form" className="btn btn-green btn-lg">{t.involve.cta}</a>
+          <VolunteerForm />
         </div>
 
         <div className="involve-ways">
@@ -35,8 +34,6 @@ export default function GetInvolved() {
             </article>
           ))}
         </div>
-
-        <VolunteerForm />
       </div>
     </section>
   )

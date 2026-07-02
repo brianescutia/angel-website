@@ -22,6 +22,13 @@ export const images = {
   outreachFair: `${base}/IMG_3895.jpeg`,    // outreach table at an outdoor fair
   seatedMeeting: `${base}/IMG_4099.jpeg`,   // members seated at a meeting
   readingFlyer: `${base}/IMG_4118.jpeg`,    // a member reading a C.A.T.A. flyer
+
+  // Added from the org's shared Drive (2026-07-01) — curated from Food
+  // Distribution, Volunteers, Youth Group, and Community Meetings folders.
+  foodDistribution: `${base}/cata-food-distribution-1.jpeg`, // volunteers handing out produce boxes
+  volunteersPicnic: `${base}/cata-volunteers-1.jpeg`,        // group at picnic tables under a pavilion
+  youthGroupEvent: `${base}/cata-youth-group-1.jpeg`,        // youth volunteers at an outdoor event
+  communityMeeting: `${base}/cata-community-meeting-1.jpeg`, // members seated around a table at a meeting
 }
 
 // Ordered set for the editorial gallery grid.
@@ -36,4 +43,8 @@ export const galleryOrder = [
   'seatedMeeting',
   'readingFlyer',
   'bannerTable',
+  'foodDistribution',
+  'volunteersPicnic',
+  'youthGroupEvent',
+  'communityMeeting',
 ]

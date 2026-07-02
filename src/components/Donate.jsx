@@ -1,18 +1,16 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
+import { links } from '../data/content.js'
 
 export default function Donate() {
   const { t } = useLanguage()
   const [ref, visible] = useScrollReveal()
   const d = t.donate
 
-  // TODO: replace "#donate" with the real donation destination when ready:
-  //   · Donorbox / Zeffy / PayPal Giving / Square checkout link, or
-  //   · Venmo  — https://venmo.com/u/<handle>
-  //   · Zelle  — show the org's email/phone for Zelle
-  //   · Apple Pay — via a Square / Stripe Payment Link
+  // Donation interest form (Google Form). Collects intent only — CATA follows
+  // up privately with payment instructions. Edit the URL in content.js → links.
   // No tax-deductible / 501(c)(3) language until that status is confirmed.
-  const donateLink = '#donate'
+  const donateLink = links.donationForm
   const secondaryLink = `mailto:${t.footer.email}?subject=${encodeURIComponent('Quiero apoyar a C.A.T.A. / I want to support C.A.T.A.')}`
 
   return (
@@ -23,7 +21,7 @@ export default function Donate() {
           <h2 className="display">{d.title}</h2>
           <p className="lead">{d.body}</p>
           <div className="donate-cta-row">
-            <a href={donateLink} className="btn btn-gold btn-lg">{d.cta}</a>
+            <a href={donateLink} className="btn btn-gold btn-lg" target="_blank" rel="noreferrer">{d.cta}</a>
             <a href={secondaryLink} className="text-link on-dark">{d.secondary} &rarr;</a>
           </div>
           <p className="donate-note">{d.note}</p>

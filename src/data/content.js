@@ -44,7 +44,11 @@ export const links = {
   tienditaFormByProduct: {
     // shirt: 'TODO_GOOGLE_FORM_LINK_SHIRT',
     // tote:  'TODO_GOOGLE_FORM_LINK_TOTE',
-  }
+  },
+
+  // Donation interest form. Collects intent only — CATA follows up privately
+  // with payment instructions (no money is collected on the site).
+  donationForm: 'https://docs.google.com/forms/d/e/1FAIpQLSdfn75dz76hLO9ThUMfzwXgTlof3qSOeCAe57BtKSqKK3IAjw/viewform'
 }
 
 export const content = {

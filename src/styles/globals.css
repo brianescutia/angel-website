@@ -646,7 +646,7 @@ p { margin: 0; }
 
 /* ===== Get Involved ===== */
 .involve-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }
-.involve-copy { position: sticky; top: 96px; }
+.involve-copy { align-self: start; }
 .involve-copy .display { margin-bottom: 18px; }
 .involve-copy .lead { margin-bottom: 28px; }
 .involve-ways { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -664,6 +664,46 @@ p { margin: 0; }
 }
 .way h3 { font-size: 19px; font-weight: 560; margin-bottom: 6px; color: var(--green-900); }
 .way p { color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+
+/* Volunteer sign-up card — compact, doesn't take over the section */
+.volunteer-card {
+  grid-column: 1 / -1;
+  scroll-margin-top: 110px; /* clear the fixed header when jumped to via #volunteer-form */
+  max-width: 640px;
+  background: var(--cream-card);
+  border: 1px solid var(--cream-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(28px, 3.2vw, 40px);
+  margin-top: 8px;
+}
+.volunteer-title {
+  font-family: var(--font-display); font-weight: 560;
+  font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15;
+  color: var(--green-900); margin-bottom: 12px;
+}
+.volunteer-lead { color: var(--ink-2); font-size: 15.5px; line-height: 1.55; margin-bottom: 8px; }
+.volunteer-note { color: var(--ink-2); font-size: 15.5px; line-height: 1.55; margin-bottom: 26px; }
+.volunteer-note a { color: var(--gold-700); font-weight: 700; }
+.volunteer-note a:hover { text-decoration: underline; }
+
+.volunteer-form { display: grid; gap: 14px; }
+.form-input {
+  width: 100%;
+  font-family: var(--font-body); font-size: 15px; color: var(--ink);
+  background: #fff; border: 1px solid var(--cream-line); border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.form-input::placeholder { color: var(--ink-3); }
+.form-input:focus { outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(58, 114, 184, 0.16); }
+.form-textarea { resize: vertical; min-height: 110px; font-family: var(--font-body); }
+/* Honeypot — off-screen, not display:none (some bots skip hidden inputs) */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-message { font-size: 13.5px; margin: 0; }
+.form-message-error { color: var(--terracotta); }
+.form-message-success { color: var(--green-700); font-weight: 600; }
+.form-actions { display: flex; justify-content: flex-end; margin-top: 4px; }
 
 /* ===== Footer ===== */
 .site-footer { background: var(--green-950); color: var(--on-dark-2); padding: 80px 0 32px; }
@@ -713,7 +753,6 @@ p { margin: 0; }
   .programs-layout { grid-template-columns: 1fr; }
   .programs-feature { position: static; max-width: 460px; }
   .programs-feature img { aspect-ratio: 16 / 11; }
-  .involve-copy { position: static; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }

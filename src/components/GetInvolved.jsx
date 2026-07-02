@@ -1,5 +1,6 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
+import VolunteerForm from './VolunteerForm.jsx'
 
 export default function GetInvolved() {
   const { t } = useLanguage()
@@ -12,8 +13,7 @@ export default function GetInvolved() {
           <p className="eyebrow">{t.involve.eyebrow}</p>
           <h2 className="display">{t.involve.title}</h2>
           <p className="lead">{t.involve.body}</p>
-          {/* TODO: link to a volunteer sign-up (Google Form / email list) */}
-          <a href={`mailto:${t.footer.email}`} className="btn btn-green btn-lg">{t.involve.cta}</a>
+          <a href="#volunteer-form" className="btn btn-green btn-lg">{t.involve.cta}</a>
         </div>
 
         <div className="involve-ways">
@@ -35,6 +35,8 @@ export default function GetInvolved() {
             </article>
           ))}
         </div>
+
+        <VolunteerForm />
       </div>
     </section>
   )

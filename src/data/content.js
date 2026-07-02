@@ -248,6 +248,22 @@ export const content = {
       cta: 'Quiero participar'
     },
 
+    volunteerForm: {
+      eyebrow: 'Súmate como voluntaria/o',
+      title: 'Nos encantaría contar contigo.',
+      lead: 'Cuéntanos un poco sobre ti y te contactaremos para coordinar cómo participar.',
+      leadNote: 'O llámanos directamente al',
+      nameLabel: 'Nombre',
+      phoneLabel: 'Teléfono',
+      emailLabel: 'Correo electrónico',
+      messageLabel: 'Mensaje (opcional)',
+      submit: 'Enviar',
+      submitting: 'Enviando…',
+      success: '¡Gracias! Te contactaremos pronto.',
+      error: 'Algo salió mal. Intenta de nuevo o escríbenos directamente.',
+      requiredError: 'Por favor completa tu nombre y un teléfono o correo.'
+    },
+
     footer: {
       tagline: 'Comunidades aliadas, tomando acción.',
       region: 'Arvin · Kern County · Valle Central de California',
@@ -496,6 +512,22 @@ export const content = {
         { title: 'Donate', body: 'Your gift becomes workshops and accompaniment.' }
       ],
       cta: 'I want to help'
+    },
+
+    volunteerForm: {
+      eyebrow: 'Sign up to volunteer',
+      title: 'We would love to have you.',
+      lead: 'Tell us a little about yourself and we will reach out to coordinate how to get you involved.',
+      leadNote: 'Or call us directly at',
+      nameLabel: 'Name',
+      phoneLabel: 'Phone',
+      emailLabel: 'Email address',
+      messageLabel: 'Message (optional)',
+      submit: 'Submit',
+      submitting: 'Sending…',
+      success: 'Thank you! We will be in touch soon.',
+      error: 'Something went wrong. Please try again or email us directly.',
+      requiredError: 'Please fill in your name and a phone number or email.'
     },
 
     footer: {

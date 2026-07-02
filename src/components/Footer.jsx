@@ -28,7 +28,7 @@ export default function Footer() {
           </div>
           <p className="footer-tagline">{f.tagline}</p>
           <p className="footer-region">{f.region}</p>
-          {/* TODO: replace "#" with real Facebook / Instagram links */}
+          {/* TODO: replace Instagram "#" with a real link once a handle is confirmed */}
           <div className="footer-social">
             {f.social.map((s) => (
               <a key={s.label} href={s.href} aria-label={s.label} title={s.label}>

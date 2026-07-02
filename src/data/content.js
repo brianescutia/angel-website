@@ -11,7 +11,7 @@
 //   · Founding date / years active — not claimed (unknown).
 //   · Event dates — none invented; all marked "Próximamente".           → events.items
 //   · Product prices — none confirmed; all "Próximamente".              → shop.items
-//   · Social media handles (Facebook / Instagram).                      → footer.social
+//   · Instagram handle (Facebook is confirmed and wired in).             → footer.social
 //   · Donation link + Venmo / Zelle / Apple Pay / PayPal handles.       → Donate.jsx
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -262,9 +262,9 @@ export const content = {
       // TODO confirm: OK to publish this phone publicly.
       phone: '661-748-5590',
       socialLabel: 'Síguenos',
-      // TODO: add real Facebook / Instagram links.
+      // TODO: add real Instagram link once a handle is confirmed.
       social: [
-        { label: 'Facebook', href: '#' },
+        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100081988801733&sk=directory_links' },
         { label: 'Instagram', href: '#' }
       ],
       rights: 'Todos los derechos reservados.'
@@ -514,9 +514,9 @@ export const content = {
       // TODO confirm: OK to publish this phone publicly.
       phone: '661-748-5590',
       socialLabel: 'Follow us',
-      // TODO: add real Facebook / Instagram links.
+      // TODO: add real Instagram link once a handle is confirmed.
       social: [
-        { label: 'Facebook', href: '#' },
+        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100081988801733&sk=directory_links' },
         { label: 'Instagram', href: '#' }
       ],
       rights: 'All rights reserved.'

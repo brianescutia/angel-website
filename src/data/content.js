@@ -14,6 +14,39 @@
 //   · Donation link + Venmo / Zelle / Apple Pay / PayPal handles.       → Donate.jsx
 // ─────────────────────────────────────────────────────────────────────────
 
+// ─────────────────────────────────────────────────────────────────────────
+// Centralized external links (edit here, used across components).
+//
+// TODO — TIENDITA / MERCADITO ORDER FORM:
+//   Replace the placeholder below with the REAL Google Form URL once CATA
+//   creates the form. This single value powers BOTH "Open form / Abrir
+//   formulario" buttons in the Tiendita section.
+//
+//   Form fields CATA plans to create:
+//     Shirt: Name, Phone, Shirt size, Shirt color (Black/White),
+//            Preferred payment (free response), Message/notes.
+//     Bag:   Name, Phone, Bag color, Preferred payment (free response),
+//            Message/notes.
+//
+//   Option 1 — ONE shared form for all products:
+//     Just set `tienditaForm` below. Leave `tienditaFormByProduct` empty.
+//   Option 2 — SEPARATE forms per product (if CATA makes different forms):
+//     Fill in `tienditaFormByProduct` keyed by the product `mockup` id
+//     ('shirt', 'tote'). Any product without an entry falls back to
+//     `tienditaForm`.
+// ─────────────────────────────────────────────────────────────────────────
+export const links = {
+  // Shared Google Form for all Tiendita products (replace here if it changes):
+  tienditaForm: 'https://docs.google.com/forms/d/e/1FAIpQLSdwTTk35PJmPAvMc-VsltKs34ZsTRL5SVLLan-YjgjUhu7sPg/viewform?usp=header',
+
+  // Optional per-product overrides. Keyed by product `mockup` id.
+  // Leave empty to use the single shared `tienditaForm` above.
+  tienditaFormByProduct: {
+    // shirt: 'TODO_GOOGLE_FORM_LINK_SHIRT',
+    // tote:  'TODO_GOOGLE_FORM_LINK_TOTE',
+  }
+}
+
 export const content = {
   es: {
     org: {
@@ -136,9 +169,10 @@ export const content = {
       eyebrow: 'Tiendita · Mercadito',
       title: 'Lleva a C.A.T.A. contigo.',
       lead:
-        'Una pequeña tiendita para sostener nuestros programas. Estos son nuestros primeros diseños; los detalles finales —fotos, precios y tallas— se confirmarán pronto. Por ahora coordinamos cada pedido por mensaje.',
-      orderCta: 'Pedir por mensaje',
+        'Actualmente la Tiendita está en preparación. Cuando los productos estén disponibles, podrás usar este formulario para indicar qué artículo te interesa y CATA se comunicará contigo para confirmar detalles y forma de pago.',
+      orderCta: 'Abrir formulario',
       note: 'Sin carrito ni pagos en línea todavía. Cada pedido se coordina de forma personal.',
+      payNote: 'No se realiza ningún pago en esta página.',
       sampleTag: 'Diseño de muestra',
       // TODO: see Tiendita.jsx — for each product, swap the placeholder mockup
       // for a real product photo, set the final price + sizes, and point the
@@ -405,9 +439,10 @@ export const content = {
       eyebrow: 'Shop · Mercadito',
       title: 'Take C.A.T.A. with you.',
       lead:
-        'A small shop to sustain our programs. These are our first designs — final details like photos, prices, and sizes are coming soon. For now we arrange each order by message.',
-      orderCta: 'Contact to order',
+        'The Tiendita is currently being prepared. When items are available, you’ll be able to use this form to share what you’re interested in, and CATA will follow up to confirm details and payment method.',
+      orderCta: 'Open form',
       note: 'No cart or online payment yet. Each order is arranged personally.',
+      payNote: 'No payment is collected on this website.',
       sampleTag: 'Sample mockup',
       products: [
         {

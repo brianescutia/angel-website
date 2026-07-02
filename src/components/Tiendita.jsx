@@ -1,21 +1,21 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
+import { links } from '../data/content.js'
 import Logo from './Logo.jsx'
 
 // Static fundraising shop — no cart, no database, no payment processing.
-// Orders are coordinated by message via a simple mailto link.
+// Orders are collected via a simple Google Form (no payment on this site).
 //
 // ─── TODO: REPLACE PLACEHOLDERS WITH REAL DETAILS ───────────────────────────
+//  · ORDER FORM link → src/data/content.js → `links.tienditaForm`
+//                      (paste the real Google Form URL there — powers both
+//                       buttons). Per-product forms: `links.tienditaFormByProduct`.
 //  · Product PHOTO  → swap <ProductMockup/> in each card for an <img/> using a
 //                     real photo in /public/images (e.g. /images/shirt.jpeg).
 //  · Final PRICE    → src/data/content.js → shop.products[].price
-//  · SIZES / DESIGN → src/data/content.js → shop.products[].detail
-//  · ORDER / PAYMENT link → `orderLink()` below. Point it at a real:
-//      - Google Form order sheet:  https://forms.gle/<id>
-//      - Venmo:   https://venmo.com/u/<handle>
-//      - Zelle:   show the org's email/phone
-//      - Apple Pay / Square link:  https://square.link/u/<id>
-//      - Shopify Buy Button / store link
+//  · SIZES / COLORS → src/data/content.js → shop.products[].detail
+//  · PAYMENT METHOD → confirm bank-transfer / payment instructions once CATA
+//                     decides (collected inside the Google Form for now).
 // ────────────────────────────────────────────────────────────────────────────
 
 // Branded SVG product mockups — intentional placeholders that carry the
@@ -52,9 +52,11 @@ export default function Tiendita() {
   const [ref, visible] = useScrollReveal({ threshold: 0.08 })
   const s = t.shop
 
-  // TODO: replace this mailto with a real order form / payment link (see header note).
+  // Resolve the Google Form URL for a product. Uses a per-product override if
+  // one is set in `links.tienditaFormByProduct`, otherwise the shared
+  // `links.tienditaForm`. TODO: paste the real Google Form URL in content.js.
   const orderLink = (product) =>
-    `mailto:${t.footer.email}?subject=${encodeURIComponent(`Pedido / Order — ${product.name}`)}`
+    links.tienditaFormByProduct?.[product.mockup] || links.tienditaForm
 
   return (
     <section id="tiendita" className="section section-cream" ref={ref}>
@@ -91,7 +93,15 @@ export default function Tiendita() {
                   <span className="product-detail">{product.detail}</span>
                 </div>
 
-                <a className="btn btn-green" href={orderLink(product)}>{s.orderCta}</a>
+                <a
+                  className="btn btn-green"
+                  href={orderLink(product)}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {s.orderCta}
+                </a>
+                <p className="product-paynote">{s.payNote}</p>
               </div>
             </article>
           ))}

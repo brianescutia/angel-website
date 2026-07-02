@@ -1,19 +1,13 @@
 import { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage.jsx'
 
-// TODO: replace with the real Google Form action URL + entry IDs once the
-// form exists. To create it: a Google Form with 4 short-answer/paragraph
-// fields in this order — Name, Phone, Email, Message — none marked
-// required (this component handles required-field validation itself).
-// Then open the published form, view its page source, and pull the
-// `action="https://docs.google.com/forms/d/e/FORM_ID/formResponse"` URL
-// and each field's `name="entry.XXXXXXXXX"` attribute into the values below.
-const GOOGLE_FORM_ACTION = ''
+// C.A.T.A. Volunteer Interest Form (docs.google.com/forms/d/e/1FAIpQLScP0jl...)
+const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScP0jlVAVl75KmTpCRcGefTg0UQZs9yfdKYOKTVODubBtpn1Q/formResponse'
 const FIELD_ENTRIES = {
-  name: '',
-  phone: '',
-  email: '',
-  message: ''
+  name: 'entry.1408666843',
+  phone: 'entry.2008400556',
+  email: 'entry.1199912804',
+  message: 'entry.1028767499'
 }
 
 const initialFields = { name: '', phone: '', email: '', message: '', company: '' }

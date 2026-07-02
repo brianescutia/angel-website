@@ -4,33 +4,41 @@ import { useScrollReveal } from '../hooks/useScrollReveal.js'
 export default function Donate() {
   const { t } = useLanguage()
   const [ref, visible] = useScrollReveal()
+  const d = t.donate
+
+  // TODO: replace "#donate" with the real donation destination when ready:
+  //   · Donorbox / Zeffy / PayPal Giving / Square checkout link, or
+  //   · Venmo  — https://venmo.com/u/<handle>
+  //   · Zelle  — show the org's email/phone for Zelle
+  //   · Apple Pay — via a Square / Stripe Payment Link
+  // No tax-deductible / 501(c)(3) language until that status is confirmed.
+  const donateLink = '#donate'
+  const secondaryLink = `mailto:${t.footer.email}?subject=${encodeURIComponent('Quiero apoyar a C.A.T.A. / I want to support C.A.T.A.')}`
 
   return (
-    <section id="donate" className="section section-green-dark" ref={ref}>
-      <div className={`container ${visible ? 'reveal in' : 'reveal'}`}>
-        <div className="donate-grid">
-          <div className="donate-copy">
-            <p className="eyebrow eyebrow-gold">{t.donate.eyebrow}</p>
-            <h2 className="display">{t.donate.title}</h2>
-            <p className="lead">{t.donate.body}</p>
-            <a href="#" className="btn btn-gold btn-lg">
-              {t.donate.cta}
-            </a>
-            <p className="donate-note">{t.donate.note}</p>
+    <section id="donate" className="section section-green" ref={ref}>
+      <div className={`container donate-grid ${visible ? 'reveal in' : 'reveal'}`}>
+        <div className="donate-copy">
+          <p className="eyebrow">{d.eyebrow}</p>
+          <h2 className="display">{d.title}</h2>
+          <p className="lead">{d.body}</p>
+          <div className="donate-cta-row">
+            <a href={donateLink} className="btn btn-gold btn-lg">{d.cta}</a>
+            <a href={secondaryLink} className="text-link on-dark">{d.secondary} &rarr;</a>
           </div>
+          <p className="donate-note">{d.note}</p>
+        </div>
 
-          <div className="tiers">
-            {t.donate.tiers.map((tier, i) => (
-              <div
-                key={tier.amount}
-                className={`tier ${visible ? 'reveal in' : 'reveal'}`}
-                style={{ transitionDelay: `${150 + i * 120}ms` }}
-              >
-                <div className="tier-amount">{tier.amount}</div>
-                <div className="tier-desc">{tier.desc}</div>
-              </div>
+        <div className="donate-panel">
+          <p className="donate-panel-label">{d.supportLabel}</p>
+          <ul className="support-list">
+            {d.support.map((s) => (
+              <li className="support-item" key={s}>
+                <span className="support-mark" aria-hidden="true" />
+                <p>{s}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

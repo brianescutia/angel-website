@@ -1,9 +1,8 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
-import { useScrollReveal } from '../hooks/useScrollReveal.js'
+import { images } from '../data/images.js'
 
 export default function Hero() {
   const { t } = useLanguage()
-  const [ref, visible] = useScrollReveal({ threshold: 0.1 })
 
   const handle = (e, id) => {
     e.preventDefault()
@@ -12,38 +11,32 @@ export default function Hero() {
   }
 
   return (
-    <section id="top" className="hero" ref={ref}>
-      <div className="hero-bg" aria-hidden="true">
-        <div className="hero-blob hero-blob-a" />
-        <div className="hero-blob hero-blob-b" />
-        <div className="hero-grain" />
+    <section id="top" className="hero">
+      <div className="hero-media" aria-hidden="true">
+        <img src={images.heroTeam} alt="" fetchpriority="high" />
       </div>
+      <div className="hero-overlay" aria-hidden="true" />
 
-      <div className={`container hero-inner ${visible ? 'reveal in' : 'reveal'}`}>
-        <div className="hero-copy">
-          <p className="eyebrow">{t.hero.eyebrow}</p>
-          <h1 className="display">{t.hero.title}</h1>
-          <p className="lead">{t.hero.body}</p>
+      <div className="container hero-inner">
+        <div className="hero-copy reveal in">
+          <p className="hero-locator">{t.hero.locator}</p>
+          <h1 className="hero-title">{t.hero.title}</h1>
+          <p className="hero-body">{t.hero.body}</p>
           <div className="hero-cta">
-            <a href="#involve" className="btn btn-primary btn-lg" onClick={(e) => handle(e, 'involve')}>
-              {t.hero.primary}
+            <a href="#donate" className="btn btn-gold btn-lg" onClick={(e) => handle(e, 'donate')}>
+              {t.hero.donate}
             </a>
-            <a href="#donate" className="btn btn-ghost btn-lg" onClick={(e) => handle(e, 'donate')}>
-              {t.hero.secondary}
+            <a href="#get-involved" className="btn btn-cream-outline btn-lg" onClick={(e) => handle(e, 'get-involved')}>
+              {t.hero.involve}
+            </a>
+            <a href="#programs" className="text-link on-dark" onClick={(e) => handle(e, 'programs')}>
+              {t.hero.programs} &rarr;
             </a>
           </div>
-        </div>
-
-        <div className="hero-art" aria-hidden="true">
-          <div className="placeholder-image hero-image">
-            <span className="placeholder-label">Family in the field · Placeholder</span>
-          </div>
-          <div className="hero-card hero-card-a">
-            <span className="dot" /> Promotoras
-          </div>
-          <div className="hero-card hero-card-b">
-            <span className="dot dot-gold" /> Cosecha Solidaria
-          </div>
+          <a href="#mission" className="hero-scroll" onClick={(e) => handle(e, 'mission')}>
+            <span className="line" aria-hidden="true" />
+            {t.hero.scroll}
+          </a>
         </div>
       </div>
     </section>

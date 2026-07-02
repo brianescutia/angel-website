@@ -1,35 +1,44 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
+import { images } from '../data/images.js'
+import Logo from './Logo.jsx'
 
 export default function Mission() {
   const { t } = useLanguage()
   const [ref, visible] = useScrollReveal()
+  const a = t.about
 
   return (
-    <section id="mission" className="section section-cream" ref={ref}>
-      <div className={`container ${visible ? 'reveal in' : 'reveal'}`}>
-        <div className="section-head">
-          <p className="eyebrow">{t.mission.eyebrow}</p>
-          <h2 className="display">{t.mission.title}</h2>
-          <p className="lead">{t.mission.body}</p>
-        </div>
+    <section id="mission" className="section section-cream about" ref={ref}>
+      <div className={`container about-grid ${visible ? 'reveal in' : 'reveal'}`}>
+        {/* Faint community-ring seal — the C.A.T.A. mark as a watermark */}
+        <Logo size={460} className="about-watermark" mono decorative />
 
-        <div className="pillars">
-          {t.mission.pillars.map((p, i) => (
-            <article
-              key={p.title}
-              className={`pillar ${visible ? 'reveal in' : 'reveal'}`}
-              style={{ transitionDelay: `${i * 120}ms` }}
-            >
-              <div className="pillar-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22">
-                  <path d="M12 2c-1 4 0 7 3 9-3 1-6 3-7 7-1-4-4-6-7-7 3-2 4-5 3-9 2 2 6 2 8 0z" fill="currentColor" />
-                </svg>
-              </div>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
-            </article>
-          ))}
+        <figure className="about-figure">
+          <img src={images.groupIndoor} alt="Familias y residentes de C.A.T.A. reunidos en comunidad" />
+          <figcaption>{t.hero.locator}</figcaption>
+        </figure>
+
+        <div className="about-copy">
+          <p className="eyebrow">{a.eyebrow}</p>
+          <h2 className="display">{a.title}</h2>
+          <p className="lead">{a.lead}</p>
+
+          <div className="about-blocks">
+            <div className="about-block">
+              <p className="about-block-label">{a.missionLabel}</p>
+              <p className="about-block-mission">{a.mission}</p>
+            </div>
+            <div className="about-block">
+              <p className="about-block-label">{a.visionLabel}</p>
+              <p>{a.vision}</p>
+            </div>
+          </div>
+
+          <blockquote className="about-quote">
+            {a.quote}
+            <span className="attr">— {a.quoteAttr}</span>
+          </blockquote>
         </div>
       </div>
     </section>

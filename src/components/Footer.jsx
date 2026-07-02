@@ -1,50 +1,89 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
+import Logo from './Logo.jsx'
 
 export default function Footer() {
   const { t } = useLanguage()
-  const year = 2026
+  const f = t.footer
+  const year = new Date().getFullYear()
+
+  const navLinks = [
+    ['mission', t.nav.mission],
+    ['programs', t.nav.programs],
+    ['events', t.nav.events],
+    ['tiendita', t.nav.shop],
+    ['donate', t.nav.donate],
+    ['get-involved', t.nav.involve]
+  ]
 
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
         <div className="footer-brand">
           <div className="brand">
-            <span className="brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 32 32" width="26" height="26">
-                <path
-                  d="M16 4c-3 5-3 9 0 13 3-4 3-8 0-13zM6 14c4 1 7 4 8 8-4-1-7-4-8-8zm20 0c-1 4-4 7-8 8 1-4 4-7 8-8zm-10 11c1 1 1 2 0 3-1-1-1-2 0-3z"
-                  fill="currentColor"
-                />
-              </svg>
+            <Logo size={48} className="brand-logo" />
+            <span className="brand-text">
+              {t.org.short}
+              <small>{t.org.english}</small>
             </span>
-            <span className="brand-text">{t.org.name}</span>
           </div>
-          <p className="footer-tagline">{t.footer.tagline}</p>
+          <p className="footer-tagline">{f.tagline}</p>
+          <p className="footer-region">{f.region}</p>
+          {/* TODO: replace "#" with real Facebook / Instagram links */}
+          <div className="footer-social">
+            {f.social.map((s) => (
+              <a key={s.label} href={s.href} aria-label={s.label} title={s.label}>
+                <SocialIcon label={s.label} />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="footer-col">
-          <h4>{t.nav.programs}</h4>
+          <h4>{f.exploreLabel}</h4>
           <ul>
-            {t.programs.items.map((p) => (
-              <li key={p.title}>{p.title}</li>
+            {navLinks.map(([id, label]) => (
+              <li key={id}><a href={`#${id}`}>{label}</a></li>
             ))}
           </ul>
         </div>
 
         <div className="footer-col">
-          <h4>Contacto</h4>
+          <h4>{f.contactLabel}</h4>
           <ul>
-            <li>{t.footer.address}</li>
-            <li>{t.footer.email}</li>
-            <li>{t.footer.phone}</li>
+            <li>
+              {/* TODO confirm: public office address + ZIP */}
+              {f.address}
+              <span className="footer-addr-note">{f.addressNote}</span>
+            </li>
+            {/* TODO confirm: public-facing email */}
+            <li><a href={`mailto:${f.email}`}>{f.email}</a></li>
+            {/* TODO confirm: OK to publish this phone publicly */}
+            <li><a href={`tel:${f.phone.replace(/[^0-9+]/g, '')}`}>{f.phone}</a></li>
           </ul>
         </div>
       </div>
 
       <div className="container footer-base">
-        <span>© {year} {t.org.name}. {t.footer.rights}</span>
-        <span>{t.footer.nonprofit}</span>
+        <span>© {year} {t.org.name}</span>
+        <span>{f.rights}</span>
       </div>
     </footer>
+  )
+}
+
+function SocialIcon({ label }) {
+  if (label === 'Instagram') {
+    return (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+      </svg>
+    )
+  }
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+      <path d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.4V5.6c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.2V14h2.3v7h3z" />
+    </svg>
   )
 }

@@ -4,31 +4,44 @@ import { useScrollReveal } from '../hooks/useScrollReveal.js'
 export default function Events() {
   const { t } = useLanguage()
   const [ref, visible] = useScrollReveal()
+  const e = t.events
 
   return (
-    <section id="events" className="section section-wheat" ref={ref}>
-      <div className={`container ${visible ? 'reveal in' : 'reveal'}`}>
-        <div className="section-head">
-          <p className="eyebrow">{t.events.eyebrow}</p>
-          <h2 className="display">{t.events.title}</h2>
-          <p className="lead">{t.events.body}</p>
+    <section id="events" className="section section-cream" ref={ref}>
+      <div className="container">
+        <div className={`section-head ${visible ? 'reveal in' : 'reveal'}`}>
+          <p className="eyebrow">{e.eyebrow}</p>
+          <h2 className="display">{e.title}</h2>
+          <p className="lead">{e.lead}</p>
         </div>
 
         <ul className="events-list">
-          {t.events.items.map((e, i) => (
+          {e.items.map((item, i) => (
             <li
-              key={e.title}
+              key={item.title}
               className={`event-row ${visible ? 'reveal in' : 'reveal'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}
+              style={{ transitionDelay: `${i * 70}ms` }}
             >
-              <div className="event-date" aria-hidden="true">
-                <span>{e.date}</span>
+              <div>
+                <p className="event-kind">{item.kind}</p>
+                {/* TODO: replace "Próximamente" with a real date once confirmed */}
+                <p className="event-soon">{e.soon}</p>
               </div>
               <div className="event-body">
-                <h3>{e.title}</h3>
-                <p className="event-loc">{e.location}</p>
-                <p>{e.body}</p>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
               </div>
+              {/* TODO: point RSVP at a real Google Form / Eventbrite / Facebook event */}
+              <a
+                className="btn btn-ghost event-cta"
+                href="#get-involved"
+                onClick={(ev) => {
+                  ev.preventDefault()
+                  document.getElementById('get-involved')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+              >
+                {e.rsvp}
+              </a>
             </li>
           ))}
         </ul>

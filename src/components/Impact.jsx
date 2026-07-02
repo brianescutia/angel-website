@@ -1,45 +1,31 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
-import { useCounter } from '../hooks/useCounter.js'
-
-function StatCounter({ target, suffix, label, start, delay }) {
-  const value = useCounter(target, { start, duration: 1800 })
-  const formatted = value.toLocaleString('en-US')
-  return (
-    <div className="stat" style={{ transitionDelay: `${delay}ms` }}>
-      <div className="stat-value">
-        <span>{formatted}</span>
-        <span className="stat-suffix">{suffix}</span>
-      </div>
-      <div className="stat-label">{label}</div>
-    </div>
-  )
-}
+import { images } from '../data/images.js'
 
 export default function Impact() {
   const { t } = useLanguage()
-  const [ref, visible] = useScrollReveal({ threshold: 0.25 })
+  const [ref, visible] = useScrollReveal({ threshold: 0.15 })
 
   return (
-    <section className="section section-cream impact-section" ref={ref}>
-      <div className={`container ${visible ? 'reveal in' : 'reveal'}`}>
-        <div className="section-head">
+    <section className="section section-green" ref={ref}>
+      <div className={`container impact-grid ${visible ? 'reveal in' : 'reveal'}`}>
+        <figure className="impact-figure">
+          <img src={images.bannerFamily} alt="Familia en la mesa de C.A.T.A. en un evento comunitario" />
+        </figure>
+
+        <div className="impact-copy">
           <p className="eyebrow">{t.impact.eyebrow}</p>
           <h2 className="display">{t.impact.title}</h2>
-          <p className="lead">{t.impact.body}</p>
-        </div>
+          <p className="lead">{t.impact.lead}</p>
 
-        <div className="stats">
-          {t.impact.stats.map((s, i) => (
-            <StatCounter
-              key={s.label}
-              target={s.value}
-              suffix={s.suffix}
-              label={s.label}
-              start={visible}
-              delay={i * 120}
-            />
-          ))}
+          <ul className="impact-list">
+            {t.impact.statements.map((s) => (
+              <li key={s} className="impact-item">
+                <span className="impact-mark" aria-hidden="true" />
+                <p>{s}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ export default function Footer() {
   const navLinks = [
     ['mission', t.nav.mission],
     ['programs', t.nav.programs],
-    ['events', t.nav.events],
+    // ['events', t.nav.events], // hidden for now — event details not confirmed
     ['tiendita', t.nav.shop],
     ['donate', t.nav.donate],
     ['get-involved', t.nav.involve]

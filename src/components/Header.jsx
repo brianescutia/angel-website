@@ -24,7 +24,7 @@ export default function Header() {
   const links = [
     ['mission', t.nav.mission],
     ['programs', t.nav.programs],
-    ['events', t.nav.events],
+    // ['events', t.nav.events], // hidden for now — event details not confirmed
     ['donate', t.nav.donate],
     ['tiendita', t.nav.shop],
     ['get-involved', t.nav.involve]

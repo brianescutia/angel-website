@@ -28,11 +28,10 @@ export default function Footer() {
           </div>
           <p className="footer-tagline">{f.tagline}</p>
           <p className="footer-region">{f.region}</p>
-          {/* TODO: replace Instagram "#" with a real link once a handle is confirmed */}
           <div className="footer-social">
             {f.social.map((s) => (
               <a key={s.label} href={s.href} aria-label={s.label} title={s.label}>
-                <SocialIcon label={s.label} />
+                <SocialIcon />
               </a>
             ))}
           </div>
@@ -53,7 +52,6 @@ export default function Footer() {
             <li>
               {/* TODO confirm: public office address + ZIP */}
               {f.address}
-              <span className="footer-addr-note">{f.addressNote}</span>
             </li>
             {/* TODO confirm: public-facing email */}
             <li><a href={`mailto:${f.email}`}>{f.email}</a></li>
@@ -71,16 +69,7 @@ export default function Footer() {
   )
 }
 
-function SocialIcon({ label }) {
-  if (label === 'Instagram') {
-    return (
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
-      </svg>
-    )
-  }
+function SocialIcon() {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
       <path d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.4V5.6c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.2V14h2.3v7h3z" />

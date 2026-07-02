@@ -11,7 +11,6 @@
 //   · Founding date / years active — not claimed (unknown).
 //   · Event dates — none invented; all marked "Próximamente".           → events.items
 //   · Product prices — none confirmed; all "Próximamente".              → shop.items
-//   · Instagram handle (Facebook is confirmed and wired in).             → footer.social
 //   · Donation link + Venmo / Zelle / Apple Pay / PayPal handles.       → Donate.jsx
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -256,16 +255,14 @@ export const content = {
       contactLabel: 'Contacto',
       // TODO confirm: public office address + ZIP / whether to publish.
       address: 'Arvin Veteran’s Hall · 454 4th Ave, Suite C · Arvin, CA',
-      addressNote: 'Dirección por confirmar',
       // TODO confirm: public-facing email.
       email: 'comunidadesaliadas411@gmail.com',
       // TODO confirm: OK to publish this phone publicly.
       phone: '661-748-5590',
       socialLabel: 'Síguenos',
-      // TODO: add real Instagram link once a handle is confirmed.
+      // No Instagram — org doesn't have one. Facebook only.
       social: [
-        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100081988801733&sk=directory_links' },
-        { label: 'Instagram', href: '#' }
+        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100081988801733&sk=directory_links' }
       ],
       rights: 'Todos los derechos reservados.'
     }
@@ -508,16 +505,14 @@ export const content = {
       contactLabel: 'Contact',
       // TODO confirm: public office address + ZIP / whether to publish.
       address: 'Arvin Veteran’s Hall · 454 4th Ave, Suite C · Arvin, CA',
-      addressNote: 'Address to confirm',
       // TODO confirm: public-facing email.
       email: 'comunidadesaliadas411@gmail.com',
       // TODO confirm: OK to publish this phone publicly.
       phone: '661-748-5590',
       socialLabel: 'Follow us',
-      // TODO: add real Instagram link once a handle is confirmed.
+      // No Instagram — org doesn't have one. Facebook only.
       social: [
-        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100081988801733&sk=directory_links' },
-        { label: 'Instagram', href: '#' }
+        { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100081988801733&sk=directory_links' }
       ],
       rights: 'All rights reserved.'
     }

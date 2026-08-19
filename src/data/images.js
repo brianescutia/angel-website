@@ -29,6 +29,10 @@ export const images = {
   volunteersPicnic: `${base}/cata-volunteers-1.jpeg`,        // group at picnic tables under a pavilion
   youthGroupEvent: `${base}/cata-youth-group-1.jpeg`,        // youth volunteers at an outdoor event
   communityMeeting: `${base}/cata-community-meeting-1.jpeg`, // members seated around a table at a meeting
+
+  // Added at the client's request (2026-08-18) for the gallery.
+  capitolAdvocacy: `${base}/IMG_4923.jpeg`,   // members with "Fight For Our Health" shirts at the Capitol
+  youthVisionBoards: `${base}/IMG_6136.jpeg`, // youth holding their 2026 vision boards outdoors
 }
 
 // Ordered set for the editorial gallery grid.
@@ -37,11 +41,13 @@ export const galleryOrder = [
   'groupIndoor',
   'workshopClimate',
   'bannerFamily',
+  'capitolAdvocacy',
   'groupOutdoor',
   'outreachFair',
   'womenChild',
   'seatedMeeting',
   'readingFlyer',
+  'youthVisionBoards',
   'bannerTable',
   'foodDistribution',
   'volunteersPicnic',

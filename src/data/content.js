@@ -103,7 +103,11 @@ export const content = {
       title: 'Muchos frentes, una sola comunidad.',
       lead:
         'Cada programa nace de lo que las familias nos piden en el campo, en la casa y en la sala comunitaria. Estos son nuestros seis pilares.',
+      // featureAlt describes the photo for screen readers / SEO; featureCaption is
+      // the visible text under it. The client asked to drop "C.A.T.A." from the
+      // caption only — the alt keeps the full description on purpose.
       featureAlt: 'Taller comunitario bilingüe de C.A.T.A. sobre el cambio climático',
+      featureCaption: 'Taller comunitario bilingüe sobre el cambio climático',
       pillars: [
         {
           img: 'womenChild',
@@ -115,7 +119,7 @@ export const content = {
           img: 'workshopClimate',
           name: 'Justicia Ambiental',
           nameAlt: 'Environmental Justice',
-          body: 'Educación sobre calor extremo, calidad del aire y clima para quienes trabajan bajo el sol.'
+          body: 'Educación sobre cambio climático, contaminación y calor extremo para quienes trabajan bajo el sol. Impulsamos políticas y acción comunitaria que generen un cambio real.'
         },
         {
           img: 'readingFlyer',
@@ -373,7 +377,9 @@ export const content = {
       title: 'Many fronts, one community.',
       lead:
         'Every program grows from what families ask of us — in the field, at home, and in the community room. These are our six pillars.',
+      // See the note on the Spanish featureAlt/featureCaption pair above.
       featureAlt: 'C.A.T.A. bilingual community workshop on climate change',
+      featureCaption: 'Bilingual community workshop on climate change',
       pillars: [
         {
           img: 'womenChild',
@@ -385,7 +391,7 @@ export const content = {
           img: 'workshopClimate',
           name: 'Environmental Justice',
           nameAlt: 'Justicia Ambiental',
-          body: 'Education on extreme heat, air quality, and climate for those who work under the sun.'
+          body: 'Education on climate change, pollution, and extreme heat for those who work under the sun. We push for policies and community action that create real change.'
         },
         {
           img: 'readingFlyer',

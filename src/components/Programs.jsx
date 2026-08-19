@@ -20,7 +20,7 @@ export default function Programs() {
           {/* One large editorial photo instead of a grid of identical cards */}
           <figure className={`programs-feature ${visible ? 'reveal in' : 'reveal'}`}>
             <img src={images.workshopClimate} alt={p.featureAlt} loading="lazy" />
-            <figcaption>{p.featureAlt}</figcaption>
+            <figcaption>{p.featureCaption}</figcaption>
           </figure>
 
           <div className="pillar-list">

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
 import { links } from '../data/content.js'
@@ -10,13 +11,47 @@ import Logo from './Logo.jsx'
 //  · ORDER FORM link → src/data/content.js → `links.tienditaForm`
 //                      (paste the real Google Form URL there — powers both
 //                       buttons). Per-product forms: `links.tienditaFormByProduct`.
-//  · Product PHOTO  → swap <ProductMockup/> in each card for an <img/> using a
-//                     real photo in /public/images (e.g. /images/shirt.jpeg).
+//  · Product PHOTO  → upload /product-photos/shirt.jpg or tote.jpg on GitHub
+//                     (see product-photos/README.md). No code edits needed.
 //  · Final PRICE    → src/data/content.js → shop.products[].price
 //  · SIZES / COLORS → src/data/content.js → shop.products[].detail
 //  · PAYMENT METHOD → confirm bank-transfer / payment instructions once CATA
 //                     decides (collected inside the Google Form for now).
 // ────────────────────────────────────────────────────────────────────────────
+
+// Real product photos are read from /product-photos by fixed filename: the
+// product's `mockup` id (shirt, tote) plus .jpg/.jpeg/.png/.webp, any case.
+// Replacing a file with the same name on GitHub swaps the photo on redeploy.
+const productPhotoModules = import.meta.glob(
+  '/product-photos/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  { eager: true, query: '?url', import: 'default' }
+)
+const photoExtensions = ['jpg', 'jpeg', 'png', 'webp']
+const productPhotosByName = Object.fromEntries(
+  Object.entries(productPhotoModules).map(([path, url]) => [path.split('/').pop().toLowerCase(), url])
+)
+
+function productPhotoUrl(id) {
+  for (const ext of photoExtensions) {
+    if (productPhotosByName[`${id}.${ext}`]) return productPhotosByName[`${id}.${ext}`]
+  }
+  return null
+}
+
+// Shows the real photo when one exists; falls back to the mockup when the file
+// is missing or fails to load (e.g. an unsupported HEIC renamed to .jpg).
+function ProductMedia({ product, tag }) {
+  const src = productPhotoUrl(product.mockup)
+  const [failed, setFailed] = useState(false)
+
+  if (!src || failed) return <ProductMockup type={product.mockup} tag={tag} />
+
+  return (
+    <div className="product-media product-photo">
+      <img src={src} alt={product.name} loading="lazy" onError={() => setFailed(true)} />
+    </div>
+  )
+}
 
 // Branded SVG product mockups — intentional placeholders that carry the
 // C.A.T.A. mark until real product photography is available.
@@ -77,8 +112,7 @@ export default function Tiendita() {
               className={`product-card ${visible ? 'reveal in' : 'reveal'}`}
               style={{ transitionDelay: `${i * 90}ms` }}
             >
-              {/* TODO: replace <ProductMockup/> with a real product <img/> */}
-              <ProductMockup type={product.mockup} tag={s.sampleTag} />
+              <ProductMedia product={product} tag={s.sampleTag} />
 
               <div className="product-body">
                 <h3 className="product-name">

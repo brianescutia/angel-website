@@ -1,56 +1,28 @@
-// Real C.A.T.A. community photography (in /public/images).
-// Shared across both languages so captions live in content.js, paths live here.
+// Real C.A.T.A. community photography.
 //
 // Note on orientation: several phone photos carry EXIF rotation. Browsers honor
 // EXIF orientation for <img> elements but NOT for CSS background-image. Every
 // photo below is rendered through an <img> (object-fit: cover) so all of them
 // display upright. Do not move these into CSS `background-image`.
 
+// Fixed section photos (hero, mission, impact, programs) live in /public/images.
 const base = '/images'
 
 export const images = {
-  // Naturally-landscape, high-impact shots
   heroTeam: `${base}/IMG_3912.jpeg`,        // sunny full-team group portrait
   groupIndoor: `${base}/IMG_3689.jpeg`,     // large indoor group portrait
   workshopClimate: `${base}/DDA45AFA-DD9D-4FDF-9D5B-3CD2130E9C5E.jpeg`, // bilingual climate workshop
-  groupOutdoor: `${base}/IMG_3583.jpeg`,    // community gathered under a tree
-  womenChild: `${base}/IMG_3694.jpeg`,      // women and a child at an event
-
-  // Brand / outreach moments (the real C.A.T.A. banner + tabling)
   bannerFamily: `${base}/IMG_4108.jpeg`,    // mother + child at the C.A.T.A. table
-  bannerTable: `${base}/IMG_3892.jpeg`,     // the C.A.T.A. banner up close
-  outreachFair: `${base}/IMG_3895.jpeg`,    // outreach table at an outdoor fair
-  seatedMeeting: `${base}/IMG_4099.jpeg`,   // members seated at a meeting
-  readingFlyer: `${base}/IMG_4118.jpeg`,    // a member reading a C.A.T.A. flyer
-
-  // Added from the org's shared Drive (2026-07-01) — curated from Food
-  // Distribution, Volunteers, Youth Group, and Community Meetings folders.
-  foodDistribution: `${base}/cata-food-distribution-1.jpeg`, // volunteers handing out produce boxes
-  volunteersPicnic: `${base}/cata-volunteers-1.jpeg`,        // group at picnic tables under a pavilion
-  youthGroupEvent: `${base}/cata-youth-group-1.jpeg`,        // youth volunteers at an outdoor event
-  communityMeeting: `${base}/cata-community-meeting-1.jpeg`, // members seated around a table at a meeting
-
-  // Added at the client's request (2026-08-18) for the gallery.
-  capitolAdvocacy: `${base}/IMG_4923.jpeg`,   // members with "Fight For Our Health" shirts at the Capitol
-  youthVisionBoards: `${base}/IMG_6136.jpeg`, // youth holding their 2026 vision boards outdoors
 }
 
-// Ordered set for the editorial gallery grid.
-export const galleryOrder = [
-  'heroTeam',
-  'groupIndoor',
-  'workshopClimate',
-  'bannerFamily',
-  'capitolAdvocacy',
-  'groupOutdoor',
-  'outreachFair',
-  'womenChild',
-  'seatedMeeting',
-  'readingFlyer',
-  'youthVisionBoards',
-  'bannerTable',
-  'foodDistribution',
-  'volunteersPicnic',
-  'youthGroupEvent',
-  'communityMeeting',
-]
+// Gallery photos are read automatically from /gallery-photos, so non-developers
+// can add or delete photos by uploading/removing files there on GitHub — no code
+// edits. Photos appear in filename order (01-, 02-, ...).
+const galleryModules = import.meta.glob(
+  '/gallery-photos/*.{jpg,jpeg,png,webp,gif,avif,JPG,JPEG,PNG,WEBP,GIF,AVIF}',
+  { eager: true, query: '?url', import: 'default' }
+)
+
+export const galleryImages = Object.keys(galleryModules)
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+  .map((path) => galleryModules[path])

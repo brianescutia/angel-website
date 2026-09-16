@@ -1,6 +1,6 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
-import { images, galleryOrder } from '../data/images.js'
+import { galleryImages } from '../data/images.js'
 
 export default function Gallery() {
   const { t } = useLanguage()
@@ -16,9 +16,9 @@ export default function Gallery() {
         </div>
 
         <div className={`gallery-masonry ${visible ? 'reveal in' : 'reveal'}`}>
-          {galleryOrder.map((key) => (
-            <figure className="gallery-item" key={key}>
-              <img src={images[key]} alt={t.gallery.alt} loading="lazy" />
+          {galleryImages.map((src) => (
+            <figure className="gallery-item" key={src}>
+              <img src={src} alt={t.gallery.alt} loading="lazy" />
             </figure>
           ))}
         </div>

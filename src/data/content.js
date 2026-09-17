@@ -284,7 +284,7 @@ export const content = {
         { title: 'Asiste a un evento', body: 'Acompáñanos en un taller o reunión y trae a una vecina.' },
         { title: 'Alíate con C.A.T.A.', body: 'Comparte tu experiencia en salud, derecho o educación.' },
         { title: 'Comparte recursos', body: 'Ayúdanos a llevar la información a más familias del Valle.' },
-        { title: 'Apoya la Tiendita', body: 'Haz un pedido y sostén nuestros programas.' },
+        { requires: 'tiendita', title: 'Apoya la Tiendita', body: 'Haz un pedido y sostén nuestros programas.' },
         { title: 'Dona', body: 'Tu aporte se convierte en talleres y acompañamiento.' }
       ],
       cta: 'Quiero participar'
@@ -553,7 +553,7 @@ export const content = {
         { title: 'Attend an event', body: 'Join us at a workshop or meeting and bring a neighbor.' },
         { title: 'Partner with C.A.T.A.', body: 'Share your expertise in health, law, or education.' },
         { title: 'Share resources', body: 'Help us carry information to more Valley families.' },
-        { title: 'Support the Tiendita', body: 'Place an order and sustain our programs.' },
+        { requires: 'tiendita', title: 'Support the Tiendita', body: 'Place an order and sustain our programs.' },
         { title: 'Donate', body: 'Your gift becomes workshops and accompaniment.' }
       ],
       cta: 'I want to help'

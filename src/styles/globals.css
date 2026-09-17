@@ -659,6 +659,8 @@ p { margin: 0; }
 .involve-copy .lead { margin-bottom: 28px; }
 /* Cards stretch to fill the copy/form column height so both columns bottom-align */
 .involve-ways { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 1fr); gap: 14px; }
+/* Odd card count (e.g. a card hidden by a feature flag): last card fills the row */
+.involve-ways .way:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .way {
   display: flex; flex-direction: column; justify-content: center;
   background: var(--cream-card); border: 1px solid var(--cream-line);

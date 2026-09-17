@@ -1,4 +1,5 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
+import { SHOW_TIENDITA } from '../data/features.js'
 import Logo from './Logo.jsx'
 
 export default function Footer() {
@@ -10,10 +11,10 @@ export default function Footer() {
     ['mission', t.nav.mission],
     ['programs', t.nav.programs],
     // ['events', t.nav.events], // hidden for now — event details not confirmed
-    ['tiendita', t.nav.shop],
+    SHOW_TIENDITA && ['tiendita', t.nav.shop],
     ['donate', t.nav.donate],
     ['get-involved', t.nav.involve]
-  ]
+  ].filter(Boolean)
 
   return (
     <footer className="site-footer">

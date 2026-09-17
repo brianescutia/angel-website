@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage.jsx'
+import { SHOW_TIENDITA } from '../data/features.js'
 import Logo from './Logo.jsx'
 
 export default function Header() {
@@ -26,9 +27,9 @@ export default function Header() {
     ['programs', t.nav.programs],
     // ['events', t.nav.events], // hidden for now — event details not confirmed
     ['donate', t.nav.donate],
-    ['tiendita', t.nav.shop],
+    SHOW_TIENDITA && ['tiendita', t.nav.shop],
     ['get-involved', t.nav.involve]
-  ]
+  ].filter(Boolean)
 
   return (
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>

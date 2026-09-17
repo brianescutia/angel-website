@@ -1,10 +1,13 @@
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import { useScrollReveal } from '../hooks/useScrollReveal.js'
 import VolunteerForm from './VolunteerForm.jsx'
+import { SHOW_TIENDITA } from '../data/features.js'
 
 export default function GetInvolved() {
   const { t } = useLanguage()
   const [ref, visible] = useScrollReveal()
+  // Cards tied to a hidden section (e.g. requires: 'tiendita') are skipped.
+  const ways = t.involve.ways.filter((w) => w.requires !== 'tiendita' || SHOW_TIENDITA)
 
   return (
     <section id="get-involved" className="section section-cream" ref={ref}>
@@ -16,7 +19,7 @@ export default function GetInvolved() {
         </div>
 
         <div className="involve-ways">
-          {t.involve.ways.map((w, i) => (
+          {ways.map((w, i) => (
             <article
               key={w.title}
               className={`way ${visible ? 'reveal in' : 'reveal'}`}

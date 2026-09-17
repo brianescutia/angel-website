@@ -11,6 +11,7 @@ import Gallery from './components/Gallery.jsx'
 import Donate from './components/Donate.jsx'
 import GetInvolved from './components/GetInvolved.jsx'
 import Footer from './components/Footer.jsx'
+import { SHOW_TIENDITA } from './data/features.js'
 
 export default function App() {
   return (
@@ -21,7 +22,7 @@ export default function App() {
         <Mission />
         <Programs />
         <Impact />
-        <Tiendita />
+        {SHOW_TIENDITA && <Tiendita />}
         <Gallery />
         {/* <Events /> hidden for now — event details/dates not confirmed */}
         <Donate />
